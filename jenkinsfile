@@ -17,6 +17,9 @@ node {
     // The download file contains pattern for downloading artifacts to the root directory by setting recursive=false
     def downloadSpec = readFile 'downloadspec.json'
     server.download spec: downloadSpec, buildInfo: buildInfo
+    
+    // Download using AQL (Artifactory Query Language)
+    def downloadspec2 = readfile 'downloadspec_aql.json'
 
     // Publish build info.
     server.publishBuildInfo buildInfo
