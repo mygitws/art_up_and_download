@@ -4,7 +4,7 @@
       "pattern": "sources/*readme*.txt",
       "target": "generic-local/",
       "recursive": "false",
-      "flast". "true"
+      "flat": "true"
     },
     {
       "pattern": "sources/*note*.txt",
