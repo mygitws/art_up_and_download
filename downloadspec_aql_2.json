@@ -7,7 +7,7 @@
         "path": {"$match": "*"},
         "name": {"$match": "readme*.txt"}
     }},
-    "target": "downloaded_using_aql"
+    "target": "downloaded_using_aql_2"
   },
   
   {
