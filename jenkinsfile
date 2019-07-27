@@ -19,8 +19,12 @@ node {
     server.download spec: downloadSpec, buildInfo: buildInfo
     
     // Download using AQL (Artifactory Query Language)
-    def downloadSpec2 = readFile 'downloadspec_aql.json'
-    server.download spec: downloadSpec2, buildInfo: buildInfo
+    def downloadSpec_aql = readFile 'downloadspec_aql.json'
+    server.download spec: downloadSpec_aql, buildInfo: buildInfo
+    
+    // Download using AQL (Artifactory Query Language)
+    def downloadSpec_aql_2 = readFile 'downloadspec_aql_2.json'
+    server.download spec: downloadSpec_aql_2, buildInfo: buildInfo
 
     // Publish build info.
     server.publishBuildInfo buildInfo
