@@ -10,13 +10,13 @@ node {
     //buildInfo.setNumber '42'
 
     // Read the upload spec which was downloaded from github.
-    def uploadSpec = readFile 'jenkins-examples/pipeline-examples/resources/recursive-flat-upload.json'
+    def uploadSpec = readFile 'uploadspec'
     // Upload to Artifactory.
     server.upload spec: uploadSpec, buildInfo: buildInfo
 
     // The download file contains pattern for downloading artifacts to the root directory by setting recursive=false
-    def downloadSpec = readFile 'jenkins-examples/pipeline-examples/resources/aql-download.json'
-    server.download spec: downloadSpec, buildInfo: buildInfo
+    //def downloadSpec = readFile 'jenkins-examples/pipeline-examples/resources/aql-download.json'
+    //server.download spec: downloadSpec, buildInfo: buildInfo
 
     // Publish build info.
     server.publishBuildInfo buildInfo
