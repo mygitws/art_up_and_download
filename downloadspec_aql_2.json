@@ -2,24 +2,21 @@
   "files": [
   
   {
-    "aql": {
-      "items.find": {
+    "aql": { "items.find": {
         "repo": "generic-local",
         "path": {"$match": "*"},
         "name": {"$match": "readme*.txt"}
-     },
-     "target": "downloaded_using_aql"
+    }},
+    "target": "downloaded_using_aql"
   },
   
   {
-    "aql": {
-      "items.find": {
+    "aql": { "items.find": {
         "repo": "generic-local",
         "path": {"$match": "recursive"},
         "name": {"$match": "note*.txt"}
-     },
-     
-     "target": "downloaded_using_aql_2"
+    }},
+    "target": "downloaded_using_aql_2"
    }
    
    ]
