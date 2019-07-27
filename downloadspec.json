@@ -1,0 +1,10 @@
+{
+  "files": [
+    {
+      "pattern": "generic-local/*.txt",
+      "target": "downloaded/",
+      "flat": "true",
+      "recursive": "true"
+    }
+  ]
+}
