@@ -22,8 +22,8 @@ node {
     //def downloadspec2 = readfile 'downloadspec_aql.json'
     //server.download spec: downloadSpec2, buildInfo: buildInfo
     
-    def downloadSpec = readFile 'downloadspec_aql.json'
-    server.download spec: downloadSpec, buildInfo: buildInfo
+    def downloadSpec2 = readFile 'downloadspec_aql.json'
+    server.download spec: downloadSpec2, buildInfo: buildInfo
 
     // Publish build info.
     server.publishBuildInfo buildInfo
