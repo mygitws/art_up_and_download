@@ -1,0 +1,15 @@
+{
+  "files": [
+    {
+      "pattern": "resources/*readme*.txt",
+      "target": "generic-local/",
+      "recursive": "false"
+    },
+    {
+      "pattern": "resources/*notes*.txt",
+      "target": "generic-local",
+      "recursive":"true",
+      "flat": "false"
+    }
+  ]
+}
