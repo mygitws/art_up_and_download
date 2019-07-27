@@ -1,0 +1,38 @@
+{
+ "files": [
+  {
+    "aql": {
+      "items.find": {
+        "repo": "generic-local",
+        "$or": [
+          {
+            "$and": [
+              {
+                "path": {
+                  "$match": "."
+                },
+                "name": {
+                  "$match": "​*.txt"
+                }
+              }
+            ]
+          },
+          {
+            "$and": [
+              {
+                "path": {
+                  "$match": "*​"
+                },
+                "name": {
+                  "$match": "*.txt"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+      "target": "downloaded_using_aql"
+    }
+ ]
+}
