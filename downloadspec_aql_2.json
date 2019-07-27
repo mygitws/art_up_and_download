@@ -13,7 +13,7 @@
   {
     "aql": { "items.find": {
         "repo": "generic-local",
-        "path": {"$match": "recursive"},
+        "path": {"$match": "sources/recursive"},
         "name": {"$match": "note*.txt"}
     }},
     "target": "downloaded_using_aql_2"
