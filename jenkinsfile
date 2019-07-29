@@ -62,6 +62,9 @@ node {
     }
     
     stage('download using parameters') {
+        echo "readme: ${params.readmefile}"
+        echo "notes: ${params.notesfile}"
+        
         def downloadSpec = """{
             "files": [
                 {
@@ -76,6 +79,8 @@ node {
         }"""
  
         server.download spec: downloadSpec, buildInfo: buildInfo
+        
+        echo downloadSpec
     }
 
     stage('publish build info') {
