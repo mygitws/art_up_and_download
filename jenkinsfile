@@ -62,14 +62,15 @@ node {
     }
     
     stage('download using parameters') {
-        def downloadSpec = {
+        def downloadSpec = """{
             "files": [
                 {
                     "pattern": "generic-local/readme1.txt",
-                    "target": "downloaded_using_params/",
+                    "target": "downloaded_using_params/"
                 }
             ]
-        }
+        }"""
+ 
         server.download spec: downloadSpec, buildInfo: buildInfo
     }
 
