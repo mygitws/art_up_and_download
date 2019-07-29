@@ -15,9 +15,14 @@ der buildInfo = null
 
 node {
     stage('check build conditions'){
+        if (params.SERVER_ID == null) {
+            currentBuild.result = 'ABORTED'
+            error('Aborting early... parameter SERVER_ID is not set!!!')
+        }
+        
         if (params.unkown == null) {
             currentBuild.result = 'ABORTED'
-            error('Aborting erarly... parameter unknown is not set!!!')
+            error('Aborting early... parameter unknown is not set!!!')
         }
     }
 
