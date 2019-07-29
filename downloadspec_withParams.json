@@ -1,1 +1,10 @@
-initial
+
+{
+  "files": [
+    {
+      "pattern": "${params.readmeFile}",
+      "target": "downloaded_using_paramsInJsonSpecFile/",
+      "flat": "false"
+    }
+  ]
+}
