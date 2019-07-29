@@ -70,7 +70,7 @@ node {
         server.download spec: downloadSpec, buildInfo: buildInfo
     }
     
-    stage('download using parameters') {       
+    stage('download using parameters in download spec defined in Jenkinsfile') {       
         def downloadSpec = """{
             "files": [
                 {
@@ -84,6 +84,11 @@ node {
             ]
         }"""
  
+        server.download spec: downloadSpec, buildInfo: buildInfo
+    }
+    
+    stage('download using parameters in download spec json file') {
+        def downloadSpec = readFile 'downloadspec_withParams.json'
         server.download spec: downloadSpec, buildInfo: buildInfo
     }
 
