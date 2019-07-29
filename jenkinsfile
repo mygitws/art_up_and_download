@@ -65,7 +65,7 @@ node {
         echo "readme: ${params.readmeFile}"
         echo "notes: ${params.notesFile}"
         def x = params.readmeFile
-        echo "x: " x
+        echo x
         def y = "y: ${readmefile}"
         echo y
         
