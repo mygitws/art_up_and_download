@@ -19,11 +19,6 @@ node {
             currentBuild.result = 'ABORTED'
             error('Aborting early... parameter SERVER_ID is not set!!!')
         }
-        
-        if (params.unkown == null) {
-            currentBuild.result = 'ABORTED'
-            error('Aborting early... parameter unknown is not set!!!')
-        }
     }
 
     stage('checkout') {
