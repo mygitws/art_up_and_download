@@ -6,7 +6,7 @@
       "target": "downloaded_using_paramsInJsonSpecFile/"
     },
     {
-      "pattern": "${notesFile}",
+      "pattern": "${params.notesFile}",
       "target": "downloaded_using_paramsInJsonSpecFile/"
     }
   ]
