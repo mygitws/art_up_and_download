@@ -14,6 +14,10 @@ def server = null
 def buildInfo = null
 
 node {
+    stage('clean workspace'{
+        sh 'rm -rf downloaded*
+    }
+    
     stage('check build conditions'){
         if (params.SERVER_ID == null) {
             currentBuild.result = 'ABORTED'
