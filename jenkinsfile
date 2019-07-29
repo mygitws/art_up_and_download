@@ -1,40 +1,73 @@
-// create build parameters. Used to set the name of the artifact to be downloaded.
+// Create build parameters. Used to set the name of the artifact to be downloaded.
+// "parameters" defined in "properties" work only when defined outside of the node block.
+// These "parameters" update the parameter configuration using the configure form.
+// Parameters already defined in "configure form" will be removed.
 properties([
     parameters([
+        string(name: 'SERVER_ID', defaultValue: 'ART', description: 'configured artifactory server ID used to refer to the artifactory in the Jenkinsfile'
         string(name: 'readmeFile', defaultValue: 'readme.txt', description: 'path to readme file'),
         string(name: 'notesFile', defaultValue: 'notes.txt', description: 'path to notes file')
     ])
 ])
 
+def server = null
+der buildInfo = null
+
 node {
+    stage('checkout') {
+        git url: 'https://github.com/mygitws/art_up_and_download.git'
+    }
+
+    stage('create artifactory instance') {
+        // Get Artifactory server instance, defined in the Artifactory Plugin administration page.
+        server = Artifactory.server SERVER_ID
+
+        buildInfo = Artifactory.newBuildInfo()
         
-    git url: 'https://github.com/mygitws/art_up_and_download.git'
+        // Set custom build name and number.
+        //buildInfo.setName 'myFrogBuild'
+        //buildInfo.setNumber '42'
+    }
 
-    // Get Artifactory server instance, defined in the Artifactory Plugin administration page.
-    def server = Artifactory.server SERVER_ID
+    stage('upload/deploy') {
+        // Read the upload spec which was downloaded from github.
+        def uploadSpec = readFile 'uploadspec.json'
+        // Upload to Artifactory.
+        server.upload spec: uploadSpec, buildInfo: buildInfo
+    }
 
-    def buildInfo = Artifactory.newBuildInfo()
-    // Set custom build name and number.
-    //buildInfo.setName 'holyFrog'
-    //buildInfo.setNumber '42'
-
-    // Read the upload spec which was downloaded from github.
-    def uploadSpec = readFile 'uploadspec.json'
-    // Upload to Artifactory.
-    server.upload spec: uploadSpec, buildInfo: buildInfo
-
-    // The download file contains pattern for downloading artifacts to the root directory by setting recursive=false
-    def downloadSpec = readFile 'downloadspec.json'
-    server.download spec: downloadSpec, buildInfo: buildInfo
+    stage('download using pattern') {
+        // The download file contains pattern for downloading artifacts to the root directory by setting recursive=false
+        def downloadSpec = readFile 'downloadspec.json'
+        server.download spec: downloadSpec, buildInfo: buildInfo
+    }
     
-    // Download using AQL (Artifactory Query Language)
-    def downloadSpec_aql = readFile 'downloadspec_aql.json'
-    server.download spec: downloadSpec_aql, buildInfo: buildInfo
+    stage('download using AQL') {
+        // Download using AQL (Artifactory Query Language)
+        def downloadSpec = readFile 'downloadspec_aql.json'
+        server.download spec: downloadSpec, buildInfo: buildInfo
+    }
     
-    // Download using AQL (Artifactory Query Language)
-    def downloadSpec_aql_2 = readFile 'downloadspec_aql_2.json'
-    server.download spec: downloadSpec_aql_2, buildInfo: buildInfo
+    stage('download using AQL -simplified-') {
+        // Download using AQL (Artifactory Query Language)
+        def downloadSpec = readFile 'downloadspec_aql_2.json'
+        server.download spec: downloadSpec, buildInfo: buildInfo
+    }
+    
+    stage('download using parameters') {
+        def downloadSpec = """{
+            "files": [
+                {
+                    "pattern": "generic-local/readme1.txt",
+                    "target": "downloaded_using_params/",
+                }
+            ]
+        }"""
+        server.download spec: downloadSpec, buildInfo: buildInfo
+    }
 
-    // Publish build info.
-    server.publishBuildInfo buildInfo
+    stage('publish build info') {
+        // Publish build info.
+        server.publishBuildInfo buildInfo
+    }
 }
