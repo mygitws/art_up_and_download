@@ -4,7 +4,7 @@
 // Parameters already defined in "configure form" will be removed.
 properties([
     parameters([
-        string(name: 'SERVER_ID', defaultValue: 'ART', description: 'configured artifactory server ID used to refer to the artifactory in the Jenkinsfile'
+        string(name: 'SERVER_ID', defaultValue: 'ART', description: 'configured artifactory server ID used to refer to the artifactory in the Jenkinsfile'),
         string(name: 'readmeFile', defaultValue: 'readme.txt', description: 'path to readme file'),
         string(name: 'notesFile', defaultValue: 'notes.txt', description: 'path to notes file')
     ])
