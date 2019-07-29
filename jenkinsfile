@@ -1,5 +1,13 @@
 node {
     git url: 'https://github.com/mygitws/art_up_and_download.git'
+    
+    // create build parameters. Used to set the name of the artifact to be downloaded.
+    properties([
+        parameters([
+            string(name: 'readmeFile', defaultValue: 'readme.txt', description: 'path to readme file'),
+            string(name: 'notesFile', defaultValue: 'notes.txt', description: 'path to notes file')
+        ])
+    ])
 
     // Get Artifactory server instance, defined in the Artifactory Plugin administration page.
     def server = Artifactory.server SERVER_ID
