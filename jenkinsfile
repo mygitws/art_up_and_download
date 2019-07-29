@@ -91,6 +91,9 @@ node {
         server.download spec: downloadSpec, buildInfo: buildInfo
     }
     
+    //Using parameters in Json download spec file:
+    //  works: "pattern": "${notesFile}"
+    //  doesn't work: "pattern": "${params.notesFile}"
     stage('download using parameters in download spec json file') {
         def downloadSpec = readFile 'downloadspec_withParams.json'
         server.download spec: downloadSpec, buildInfo: buildInfo
