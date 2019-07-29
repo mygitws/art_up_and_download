@@ -14,7 +14,7 @@ def server = null
 def buildInfo = null
 
 node {
-    stage('clean workspace'{
+    stage('clean workspace'){
         sh 'rm -rf downloaded*'
     }
     
