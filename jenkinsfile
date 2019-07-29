@@ -15,7 +15,7 @@ def buildInfo = null
 
 node {
     stage('clean workspace'{
-        sh 'rm -rf downloaded*
+        sh 'rm -rf downloaded*'
     }
     
     stage('check build conditions'){
