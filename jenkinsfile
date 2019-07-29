@@ -11,7 +11,7 @@ properties([
 ])
 
 def server = null
-der buildInfo = null
+def buildInfo = null
 
 node {
     stage('check build conditions'){
