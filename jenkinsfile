@@ -19,6 +19,15 @@ node {
             currentBuild.result = 'ABORTED'
             error('Aborting early... parameter SERVER_ID is not set!!!')
         }
+        
+        echo "readme: ${params.readmefile}" //didn't work
+        echo "readme: ${params.readmeFile}"
+        echo "notes: ${params.notesfile}" //didn't work
+        echo "notes: ${params.notesFile}"
+        echo "readme: ${readmefile}"
+        echo "readme: ${readmeFile}"
+        echo params.readmefile //didn't work
+        echo params.readmeFile
     }
 
     stage('checkout') {
@@ -61,16 +70,7 @@ node {
         server.download spec: downloadSpec, buildInfo: buildInfo
     }
     
-    stage('download using parameters') {
-        echo "readme: ${params.readmefile}"
-        echo "readme: ${params.readmeFile}"
-        echo "notes: ${params.notesfile}"
-        echo "notes: ${params.notesFile}"
-        echo "readme: ${readmefile}"
-        echo "readme: ${readmeFile}"
-        echo params.readmefile
-        echo params.readmeFile
-        
+    stage('download using parameters') {       
         def downloadSpec = """{
             "files": [
                 {
@@ -83,12 +83,8 @@ node {
                 }
             ]
         }"""
-        
-        echo downloadSpec
  
         server.download spec: downloadSpec, buildInfo: buildInfo
-        
-        
     }
 
     stage('publish build info') {
