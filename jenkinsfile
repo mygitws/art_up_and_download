@@ -62,22 +62,22 @@ node {
     }
     
     stage('download using parameters') {
-        echo "readme: ${params.readmefile}"
-        echo "notes: ${params.notesfile}"
-        def x = params.readmefile
-        echo x
-        def y = "${readmefile}"
+        echo "readme: ${params.readmeFile}"
+        echo "notes: ${params.notesFile}"
+        def x = params.readmeFile
+        echo "x: " x
+        def y = "y: ${readmefile}"
         echo y
         
         
         def downloadSpec = """{
             "files": [
                 {
-                    "pattern": "${params.readmefile}",
+                    "pattern": "${params.readmeFile}",
                     "target": "downloaded_using_params/"
                 },
                 {
-                    "pattern": "${params.notesfile}",
+                    "pattern": "${params.notesFile}",
                     "target": "downloaded_using_params/"
                 }
             ]
