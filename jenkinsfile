@@ -14,6 +14,13 @@ def server = null
 der buildInfo = null
 
 node {
+    stage('check build conditions'){
+        if (params.unkown == null) {
+            currentBuild.result = 'ABORTED'
+            error('Aborting erarly... parameter unknown is not set!!!')
+        }
+    }
+
     stage('checkout') {
         git url: 'https://github.com/mygitws/art_up_and_download.git'
     }
