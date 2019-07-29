@@ -7,7 +7,7 @@
         "path": {"$match": "*"},
         "name": {"$match": "readme*.txt"}
     }},
-    "target": "downloaded_using_aql_2"
+    "target": "downloaded_using_aql_simplified"
   },
   
   {
@@ -16,7 +16,7 @@
         "path": {"$match": "sources/recursive"},
         "name": {"$match": "note*.txt"}
     }},
-    "target": "downloaded_using_aql_2"
+    "target": "downloaded_using_aql_simplified"
    }
    
    ]
