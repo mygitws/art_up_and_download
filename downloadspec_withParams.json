@@ -4,6 +4,10 @@
     {
       "pattern": "${readmeFile}",
       "target": "downloaded_using_paramsInJsonSpecFile/"
+    },
+    {
+      "pattern": "${notesFile}",
+      "target": "downloaded_using_paramsInJsonSpecFile/"
     }
   ]
 }
