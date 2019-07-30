@@ -45,7 +45,7 @@ node {
             git url: 'https://github.com/mygitws/testproj.git'
         }
         //use repo_art
-        sh 'cat readme1.txt'
+        sh 'cat repo_art/sources/readme1.txt'
         //use repo_greeting
         sh 'chmod +x repo_greeting/sayHello'
         sh './repo_greeting/sayHello "Git"'
