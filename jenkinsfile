@@ -36,6 +36,19 @@ node {
 
     stage('checkout') {
         git url: 'https://github.com/mygitws/art_up_and_download.git'
+        
+        //just to test using multiple git repositories
+        dir('repo_art'){
+            git url: 'https://github.com/mygitws/art_up_and_download.git'
+        }
+        dir('repo_greeting'){
+            git url: 'https://github.com/mygitws/testproj.git'
+        }
+        //use repo_art
+        sh 'cat readme1.txt'
+        //use repo_greeting
+        sh 'chmod +x repo_greeting/sayHello'
+        sh './repo_greeting/sayHello "Git"'
     }
 
     stage('create artifactory instance') {
