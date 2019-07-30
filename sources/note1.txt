@@ -1,3 +1,5 @@
 # In note1.txt
 
 some notes...
+
+and notes.
