@@ -8,6 +8,10 @@
     {
       "pattern": "${notesFile}",
       "target": "downloaded_using_paramsInJsonSpecFile/"
+    },
+    {
+      "pattern": "${compA}",
+      "target": "downloaded_using_paramsInJsonSpecFile/"
     }
   ]
 }
