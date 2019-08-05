@@ -70,7 +70,7 @@ node {
         // Read the upload spec which was downloaded from github.
         def uploadSpec = readFile 'uploadspec.json'
         // Upload to Artifactory.
-        server.upload spec: uploadSpec, buildInfo: buildInfo_onlyUpload
+        server.upload spec: uploadSpec, buildInfo: buildInfo
     }
 
     stage('download using pattern') {
