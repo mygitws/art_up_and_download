@@ -58,6 +58,7 @@ node {
         server = Artifactory.server SERVER_ID
 
         buildInfo = Artifactory.newBuildInfo()
+        buildInfo_onlyUpload = Artifactory.newBuildInfo()
         
         // Set custom build name and number.
         //buildInfo.setName 'myFrogBuild'
