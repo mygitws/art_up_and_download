@@ -114,6 +114,15 @@ node {
     stage('download using parameters in download spec json file') {
         def downloadSpec = readFile 'downloadspec_withParams.json'
         server.download spec: downloadSpec, buildInfo: buildInfo
+        
+        sh '''
+        mkdir toUpload
+        cd toUpload
+        cp ../downloaded_using_paramsInJsonSpecFile/me.org/update_compA/update_compA*.zip .
+        tree
+        mv update_compA*.zip compA.zip
+        tree
+        '''
     }
 
     stage('publish build info') {
