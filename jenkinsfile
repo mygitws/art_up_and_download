@@ -12,6 +12,7 @@ properties([
 
 def server = null
 def buildInfo = null
+def buildInfo_onlyUpload = null
 
 node {
     stage('clean workspace'){
@@ -67,7 +68,7 @@ node {
         // Read the upload spec which was downloaded from github.
         def uploadSpec = readFile 'uploadspec.json'
         // Upload to Artifactory.
-        server.upload spec: uploadSpec, buildInfo: buildInfo
+        server.upload spec: uploadSpec, buildInfo: buildInfo_onlyUpload
     }
 
     stage('download using pattern') {
@@ -115,6 +116,6 @@ node {
 
     stage('publish build info') {
         // Publish build info.
-        server.publishBuildInfo buildInfo
+        server.publishBuildInfo buildInfo_onlyUpload
     }
 }
