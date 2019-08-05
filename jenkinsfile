@@ -6,7 +6,7 @@ properties([
     parameters([
         string(name: 'SERVER_ID', defaultValue: 'ART', description: 'configured artifactory server ID used to refer to the artifactory in the Jenkinsfile'),
         string(name: 'readmeFile', defaultValue: 'generic-local/readme1.txt', description: 'path to readme file'),
-        string(name: 'notesFile', defaultValue: 'generic-local/sources/note1.txt', description: 'path to notes file')
+        string(name: 'notesFile', defaultValue: 'generic-local/sources/note1.txt', description: 'path to notes file'),
         string(name: 'compA', defaultValue: 'generic-local/me.org/update_compA/update_compA-0.0.1+alpha-mybranch.7.zip', description: 'path to compA')
     ])
 ])
