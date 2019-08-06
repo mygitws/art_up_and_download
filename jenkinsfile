@@ -120,13 +120,15 @@ node {
             def remotePath = buildInfo.getDependencies()[0].getRemotePath()
             def md5 = buildInfo.getDependencies()[0].getMd5()
             def sha1 = buildInfo.getDependencies()[0].getSha1()
-            //def sha256 = buildInfo.getDependencies()[0].getSha256()
+            //def sha256 = buildInfo.getDependencies()[0].getSha256() //does not work
+            def sha256 = buildInfo.getDependencies()[0].getChecksums().getSha256()
             //def id = buildInfo.getDependencies()[0].getId()
             
             echo "localPath: ${localPath}"
             echo "remotePath: ${remotePath}"
             echo "md5: ${md5}"
             echo "sha1: ${sha1}"
+            echo "sha256: ${sha256}"
         }
         
         sh '''
