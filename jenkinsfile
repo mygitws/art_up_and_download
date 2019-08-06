@@ -115,6 +115,18 @@ node {
         def downloadSpec = readFile 'downloadspec_withParams.json'
         server.download spec: downloadSpec, buildInfo: buildInfo
         
+        if (buildInfo.getDependencies().size() > 0) {
+            def localPath = buildInfo.getDependencies()[0].getLocalPath()
+            def remotePath = buildInfo.getDependencies()[0].getRemotePath()
+            def md5 = buildInfo.getDependencies()[0].getMd5()
+            def sha1 = buildInfo.getDependencies()[0].getSha1()
+            def sha256 = buildInfo.getDependencies()[0].getSha256()
+            def id = buildInfo.getDependencies()[0].getId()
+            
+            echo "id: ${id}"
+            echo "sha256: ${sha256}"
+        }
+        
         sh '''
         mkdir toUpload
         cd toUpload
@@ -130,3 +142,4 @@ node {
         server.publishBuildInfo buildInfo
     }
 }
+
