@@ -3,7 +3,7 @@
   "files": [
     {
       "pattern": "${readmeFile}",
-      "target": "downloaded_using_paramsInJsonSpecFile"
+      "target": "downloaded_using_paramsInJsonSpecFile/"
     },
     {
       "pattern": "${notesFile}",
