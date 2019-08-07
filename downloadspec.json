@@ -5,6 +5,11 @@
       "target": "downloaded/",
       "flat": "true",
       "recursive": "true"
+    },
+    {
+      "pattern": "generic-local/me.org/components/compA/compA-0.0.1+alpha-mybranch.7.zip",
+      "target": "downloaded/compA.zip",
+      "flat": "true"
     }
   ]
 }
