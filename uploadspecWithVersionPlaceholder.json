@@ -1,0 +1,10 @@
+{
+  "files": [
+    {
+      "pattern": "sources/*readme*.txt",
+      "target": "generic-local/(*)readme(*)-${version}.txt",
+      "recursive": "false",
+      "flat": "true"
+    }
+  ]
+}
