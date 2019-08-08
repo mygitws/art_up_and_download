@@ -80,6 +80,11 @@ node {
         // Upload to Artifactory.
         server.upload spec: uploadSpec, buildInfo: buildInfo
     }
+    
+    stage('download latest') {
+        def downloadSpec = readFile 'downloadspec_latestBuild.json'
+        server.download spec: downloadSpec, buildInfo: buildInfo
+    }
 
     stage('download using pattern') {
         // The download file contains pattern for downloading artifacts to the root directory by setting recursive=false
