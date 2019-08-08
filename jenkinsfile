@@ -4,6 +4,7 @@
 // Parameters already defined in "configure form" will be removed.
 properties([
     parameters([
+        string(name: 'version', defaultValue: '1', description: 'version of uploaded file'),
         string(name: 'SERVER_ID', defaultValue: 'ART', description: 'configured artifactory server ID used to refer to the artifactory in the Jenkinsfile'),
         string(name: 'readmeFile', defaultValue: 'generic-local/readme1.txt', description: 'path to readme file'),
         string(name: 'notesFile', defaultValue: 'generic-local/sources/note1.txt', description: 'path to notes file'),
@@ -69,6 +70,13 @@ node {
     stage('upload/deploy') {
         // Read the upload spec which was downloaded from github.
         def uploadSpec = readFile 'uploadspec.json'
+        // Upload to Artifactory.
+        server.upload spec: uploadSpec, buildInfo: buildInfo
+    }
+    
+    stage('upload versioned files') {
+        // Read the upload spec which was downloaded from github.
+        def uploadSpec = readFile 'uploadspecWithVersionPlaceholder.json'
         // Upload to Artifactory.
         server.upload spec: uploadSpec, buildInfo: buildInfo
     }
