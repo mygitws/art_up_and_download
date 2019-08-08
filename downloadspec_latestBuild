@@ -1,0 +1,19 @@
+
+{
+  "files": [
+    {
+      "pattern": "generic-local/me.org/readme/readme*.txt",
+      "target": "downloaded_latest/readme_latest.txt",
+      "build": "jfrog_my_up_and_download",
+      "flat": "true",
+      "recursive": "false"
+    },
+    {
+      "pattern": "generic-local/me.org/readme/readme*.txt",
+      "target": "downloaded_latest/readme_56.txt",
+      "build": "jfrog_my_up_and_download/56",
+      "flat": "true",
+      "recursive": "false"
+    }
+  ]
+}
