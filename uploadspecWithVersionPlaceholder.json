@@ -1,8 +1,8 @@
 {
   "files": [
     {
-      "pattern": "sources/*readme*.txt",
-      "target": "generic-local/(*)readme(*)-${version}.txt",
+      "pattern": "sources/(*)readme(*).txt",
+      "target": "generic-local/{1}readme{2}-${version}.txt",
       "recursive": "false",
       "flat": "true"
     }
