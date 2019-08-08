@@ -2,8 +2,8 @@
   "files": [
     {
       "pattern": "generic-local/me.org/readme/readme*.txt",
-      "target": "downloaded_latest/readme_latest.txt",
-      "build": "jfrog_my_up_and_download",
+      "target": "downloaded_latest/readme_${buildInfo.number}.txt",
+      "build": "jfrog_my_up_and_download/${buildInfo.number}",
       "flat": "true",
       "recursive": "false"
     },
