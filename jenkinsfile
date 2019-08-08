@@ -16,6 +16,8 @@ def server = null
 def buildInfo = null
 //def buildInfo_onlyUpload = null
 
+def buildNumberTest = 60
+
 node {
     stage('clean workspace'){
         sh 'rm -rf *'
