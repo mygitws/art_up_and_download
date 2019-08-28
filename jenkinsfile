@@ -43,7 +43,7 @@ node {
             error('Aborting early... parameter SERVER_ID is not set!!!')
             
             // using try catch
-            throw new Exception("Parameter SERVER_ID is not set!")
+            //throw new Exception("Parameter SERVER_ID is not set!")
         }
         
         echo "readme: ${params.readmefile}" //didn't work
@@ -181,5 +181,7 @@ node {
     echo "Catched Error: ${err}"
     currentBuild.result = "FAILURE"
   }
+  
+  echo "RESULT: ${currentBuild.result}"
 }
 
