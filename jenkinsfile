@@ -178,10 +178,10 @@ node {
     }
   } 
   catch (err) {
+    echo "RESULT_1: ${currentBuild.result}"
     echo "Catched Error: ${err}"
     currentBuild.result = "FAILURE"
+    echo "RESULT_2: ${currentBuild.result}"
   }
-  
-  echo "RESULT: ${currentBuild.result}"
 }
 
