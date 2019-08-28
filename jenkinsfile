@@ -20,7 +20,7 @@ def buildNumberTest = 60
 
 node {
   //try 
-  {
+  //{
     stage('clean workspace'){
         sh 'mkdir -p a/b/c'
         sh 'touch a/b/c/file'
@@ -176,7 +176,7 @@ node {
         // Publish build info.
         server.publishBuildInfo buildInfo
     }
-  } 
+  /} 
   //catch (err) {
   //  echo "Catched Error: ${err}"
   //  currentBuild.result = "FAILURE"
