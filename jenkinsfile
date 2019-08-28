@@ -20,8 +20,17 @@ def buildNumberTest = 60
 
 node {
     stage('clean workspace'){
+        sh 'mkdir -p a/b/c'
+        sh 'touch a/b/c/file'
+        sh 'pwd && tree'
         sh 'rm -rf *'
-        sh 'ls'
+        sh 'pwd && tree'
+        
+        sh 'mkdir -p a/b/c'
+        sh 'touch a/b/c/file'
+        sh 'pwd && tree'
+        deleteDir()
+        sh 'pwd && tree'
     }
     
     stage('check build conditions'){
