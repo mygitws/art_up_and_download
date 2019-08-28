@@ -19,8 +19,8 @@ def buildInfo = null
 def buildNumberTest = 60
 
 node {
-  //try 
-  //{
+  try 
+  {
     stage('clean workspace'){
         sh 'mkdir -p a/b/c'
         sh 'touch a/b/c/file'
@@ -39,7 +39,7 @@ node {
     stage('check build conditions'){
         if (params.SERVER_ID == null || !params.SERVER_ID.trim()) {
             // using error()
-            //currentBuild.result = 'ABORTED'
+            currentBuild.result = 'ABORTED'
             error('Aborting early... parameter SERVER_ID is not set!!!')
             
             // using try catch
@@ -176,10 +176,10 @@ node {
         // Publish build info.
         server.publishBuildInfo buildInfo
     }
-  //} 
-  //catch (err) {
-  //  echo "Catched Error: ${err}"
-  //  currentBuild.result = "FAILURE"
-  //}
+  } 
+  catch (err) {
+    echo "Catched Error: ${err}"
+    currentBuild.result = "FAILURE"
+  }
 }
 
