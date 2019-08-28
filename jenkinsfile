@@ -176,7 +176,7 @@ node {
         // Publish build info.
         server.publishBuildInfo buildInfo
     }
-  /} 
+  //} 
   //catch (err) {
   //  echo "Catched Error: ${err}"
   //  currentBuild.result = "FAILURE"
