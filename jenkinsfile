@@ -19,7 +19,8 @@ def buildInfo = null
 def buildNumberTest = 60
 
 node {
-  try {
+  //try 
+  {
     stage('clean workspace'){
         sh 'mkdir -p a/b/c'
         sh 'touch a/b/c/file'
