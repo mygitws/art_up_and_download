@@ -38,11 +38,11 @@ node {
     stage('check build conditions'){
         if (params.SERVER_ID == null || !params.SERVER_ID.trim()) {
             // using error()
-            currentBuild.result = 'ABORTED'
+            //currentBuild.result = 'ABORTED'
             //error('Aborting early... parameter SERVER_ID is not set!!!')
             
             // using try catch
-            //raise 'Aborting early... parameter SERVER_ID is not set!!!'
+            raise 'Aborting early... parameter SERVER_ID is not set!!!'
         }
         
         echo "readme: ${params.readmefile}" //didn't work
