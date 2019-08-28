@@ -180,7 +180,7 @@ node {
   catch (err) {
     echo "RESULT_1: ${currentBuild.result}"
     echo "Catched Error: ${err}"
-    currentBuild.result = "FAILURE"
+    currentBuild.result = 'FAILURE'
     echo "RESULT_2: ${currentBuild.result}"
   }
 }
