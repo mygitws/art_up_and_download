@@ -1,5 +1,3 @@
-import hudson.AbortException
-
 // Create build parameters. Used to set the name of the artifact to be downloaded.
 // "parameters" defined in "properties" work only when defined outside of the node block.
 // These "parameters" update the parameter configuration using the configure form.
@@ -41,10 +39,10 @@ node {
         if (params.SERVER_ID == null || !params.SERVER_ID.trim()) {
             // using error()
             //currentBuild.result = 'ABORTED'
-            //error('Aborting early... parameter SERVER_ID is not set!!!')
+            error('Aborting early... parameter SERVER_ID is not set!!!')
             
             // using try catch
-            throw new AbortException("Parameter SERVER_ID is not set!")
+            //throw new Exception("Parameter SERVER_ID is not set!")
         }
         
         echo "readme: ${params.readmefile}" //didn't work
