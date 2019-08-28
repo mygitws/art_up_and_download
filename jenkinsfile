@@ -12,10 +12,10 @@ properties([
     ])
 ])
 
+
 def server = null
 def buildInfo = null
 //def buildInfo_onlyUpload = null
-
 def buildNumberTest = 60
 
 node {
@@ -37,10 +37,11 @@ node {
     
     stage('check build conditions'){
         if (params.SERVER_ID == null || !params.SERVER_ID.trim()) {
+            // using error()
             currentBuild.result = 'ABORTED'
-            error('Aborting early... parameter SERVER_ID is not set!!!')
+            //error('Aborting early... parameter SERVER_ID is not set!!!')
             
-            //using try catch
+            // using try catch
             //raise 'Aborting early... parameter SERVER_ID is not set!!!'
         }
         
