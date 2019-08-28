@@ -12,15 +12,14 @@ properties([
     ])
 ])
 
-
-def server = null
-def buildInfo = null
-//def buildInfo_onlyUpload = null
-def buildNumberTest = 60
-
 node {
   try 
   {
+    def server = null
+    def buildInfo = null
+    //def buildInfo_onlyUpload = null
+    def buildNumberTest = 60
+    
     stage('clean workspace'){
         sh 'mkdir -p a/b/c'
         sh 'touch a/b/c/file'
@@ -181,7 +180,7 @@ node {
     echo "RESULT_1: ${currentBuild.result}"
     echo "Catched Error: ${err}"
     currentBuild.result = 'FAILURE'
-    echo "RESULT_2: ${currentBuild.result}"
+    echo "RESULT_2: ${currentBuild.result}" // Output: RESULT_2: ABORTED. Why?
   }
 }
 
