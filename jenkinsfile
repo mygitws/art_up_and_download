@@ -20,6 +20,19 @@ node {
     //def buildInfo_onlyUpload = null
     def buildNumberTest = 60
     
+    stage('create artifactory instance') {
+        // Get Artifactory server instance, defined in the Artifactory Plugin administration page.
+        server = Artifactory.server SERVER_ID
+
+        buildInfo = Artifactory.newBuildInfo()
+        echo "$buildInfo.publish.username"
+        //buildInfo_onlyUpload = Artifactory.newBuildInfo()
+        
+        // Set custom build name and number.
+        //buildInfo.setName 'myFrogBuild'
+        //buildInfo.setNumber '42'
+    }
+    
     stage('clean workspace'){
         sh 'mkdir -p a/b/c'
         sh 'touch a/b/c/file'
@@ -70,19 +83,6 @@ node {
         //use repo_greeting
         sh 'chmod +x repo_greeting/sayHello'
         sh './repo_greeting/sayHello "Git"'
-    }
-
-    stage('create artifactory instance') {
-        // Get Artifactory server instance, defined in the Artifactory Plugin administration page.
-        server = Artifactory.server SERVER_ID
-
-        buildInfo = Artifactory.newBuildInfo()
-        echo buildInfo
-        //buildInfo_onlyUpload = Artifactory.newBuildInfo()
-        
-        // Set custom build name and number.
-        //buildInfo.setName 'myFrogBuild'
-        //buildInfo.setNumber '42'
     }
 
     stage('upload/deploy') {
